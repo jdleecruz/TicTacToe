@@ -7,143 +7,44 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/text_view_p1"
+        android:id="@+id/text_view_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Player 1: 0"
+        android:layout_marginTop="24dp"
+        android:text="Tic-Tac-Toe Variations App"
+        android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/text_view_p2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Player 2: 0"
-        android:textSize="36sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_p1" />
-
     <Button
-        android:id="@+id/button_reset"
-        android:layout_width="wrap_content"
+        android:id="@+id/button_numerical"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Reset"
-        android:textSize="30sp"
+        android:padding="20dp"
+        android:text="Numerical Tic-Tac-Toe"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_rules"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_00"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:padding="25dp"
-        android:text="X"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_10"
-        app:layout_constraintEnd_toStartOf="@+id/button_01" />
-
-    <Button
-        android:id="@+id/button_01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:padding="25dp"
-        android:text="O"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_11"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button_02"
-        android:layout_width="wrap_content"
+        android:id="@+id/button_rules"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:padding="25dp"
-        android:text="X"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_12"
-        app:layout_constraintStart_toEndOf="@+id/button_01" />
-
-    <Button
-        android:id="@+id/button_10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:padding="25dp"
-        android:text="O"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_20"
-        app:layout_constraintEnd_toStartOf="@+id/button_11" />
-
-    <Button
-        android:id="@+id/button_11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:padding="25dp"
-        android:text="X"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_21"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button_12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:padding="25dp"
-        android:text="O"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_22"
-        app:layout_constraintStart_toEndOf="@+id/button_11" />
-
-    <Button
-        android:id="@+id/button_20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="150dp"
-        android:padding="25dp"
-        android:text="O"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_21" />
-
-    <Button
-        android:id="@+id/button_21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="150dp"
-        android:padding="25dp"
-        android:text="O"
-        android:textSize="24sp"
+        android:layout_marginBottom="176dp"
+        android:padding="20dp"
+        android:text="Rules for Variations"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/button_22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="150dp"
-        android:padding="25dp"
-        android:text="X"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_21" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

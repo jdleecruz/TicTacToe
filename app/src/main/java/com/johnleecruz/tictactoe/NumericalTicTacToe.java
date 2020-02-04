@@ -31,7 +31,7 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
         textViewPlayer2 = findViewById(R.id.text_view_p2);
 
         for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3; i++) {
+            for(int j = 0; j < 3; j++) {
                 String buttonID = "button_" + i + j;
                 int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
                 buttons[i][j] = findViewById(resID);

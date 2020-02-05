@@ -27,7 +27,7 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.numerical_tictactoe);
 
-        textViewPlayer1 = findViewById(R.id.text_view_header);
+        textViewPlayer1 = findViewById(R.id.text_view_p1);
         textViewPlayer2 = findViewById(R.id.text_view_p2);
 
         for(int i = 0; i < 3; i++) {
@@ -56,8 +56,14 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
 
         if(player1Turn) {
             ((Button) v).setText("X");
+            if (!checkForWin()) {
+                Toast.makeText(this, "Player 2's Turn.", Toast.LENGTH_SHORT).show();
+            }
         } else {
             ((Button) v).setText("O");
+            if (!checkForWin()) {
+                Toast.makeText(this, "Player 1's Turn.", Toast.LENGTH_SHORT).show();
+            }
         }
 
         roundCount++;

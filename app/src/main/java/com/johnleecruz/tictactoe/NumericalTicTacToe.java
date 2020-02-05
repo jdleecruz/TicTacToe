@@ -56,12 +56,12 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
 
         if(player1Turn) {
             ((Button) v).setText("X");
-            if (!checkForWin()) {
+            if (!checkForWin() && roundCount != 8) {
                 Toast.makeText(this, "Player 2's Turn.", Toast.LENGTH_SHORT).show();
             }
         } else {
             ((Button) v).setText("O");
-            if (!checkForWin()) {
+            if (!checkForWin() && roundCount != 8) {
                 Toast.makeText(this, "Player 1's Turn.", Toast.LENGTH_SHORT).show();
             }
         }

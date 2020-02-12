@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".NumericalTicTacToe"></activity>
+        <activity android:name=".WildTicTacToe"></activity>
 
     </application>
 

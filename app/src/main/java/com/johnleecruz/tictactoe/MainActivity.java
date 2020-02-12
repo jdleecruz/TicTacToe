@@ -10,6 +10,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button button_var1;
+    private Button button_var2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button_var1 = findViewById(R.id.button_numerical);
         button_var1.setOnClickListener(this);
 
+        button_var2 = findViewById(R.id.button_wild);
+        button_var2.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -26,6 +31,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.button_numerical) {
             Intent intent = new Intent(getApplicationContext(),
                     NumericalTicTacToe.class);
+            startActivity(intent);
+        }
+        else if (v.getId() == R.id.button_wild) {
+            Intent intent = new Intent(getApplicationContext(),
+                    WildTicTacToe.class);
             startActivity(intent);
         }
     }

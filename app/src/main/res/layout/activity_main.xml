@@ -36,10 +36,19 @@
             android:id="@+id/button_rules"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/button_wild"
+            android:padding="20dp"
+            android:text="Rules for Variations"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/button_wild"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/button_numerical"
             android:layout_marginTop="0dp"
             android:padding="20dp"
-            android:text="Rules for Variations"
+            android:text="Wild Tic-Tac-Toe"
             android:textSize="18sp" />
 
     </RelativeLayout>

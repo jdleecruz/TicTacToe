@@ -22,6 +22,7 @@ public class WildTicTacToe extends Activity implements View.OnClickListener {
 
     private TextView textViewPlayer1;
     private TextView textViewPlayer2;
+    private TextView outputText;
 
     private EditText editText;
 
@@ -32,6 +33,7 @@ public class WildTicTacToe extends Activity implements View.OnClickListener {
 
         textViewPlayer1 = findViewById(R.id.text_view_p1);
         textViewPlayer2 = findViewById(R.id.text_view_p2);
+        outputText = findViewById(R.id.output_textview);
 
         editText = findViewById(R.id.edit_text_players);
 
@@ -61,31 +63,54 @@ public class WildTicTacToe extends Activity implements View.OnClickListener {
 
         String letter = editText.getText().toString();
 
-        if(player1Turn) {
-            ((Button) v).setText(letter);
-            if (!checkForWin() && roundCount != 8) {
+        if (player1Turn) {
+            if (letter.equals("X") || letter.equals("O")) {
+                ((Button) v).setText(letter);
+                outputText.setText("");
+
+                if (!checkForWin() && roundCount != 8) {
                     Toast.makeText(this, "Player 2's Turn.", Toast.LENGTH_SHORT).show();
+                }
+                player1Turn = false;
+
+                if(checkForWin()) {
+                    player1Turn = true;
+                    if(player1Turn) {
+                        player1Wins();
+                    }
+                }
+
+            } else {
+                outputText.setText("Invalid input. Must enter a 'X' or an 'O'.");
+                player1Turn = true;
             }
         }
         else {
-            ((Button) v).setText(letter);
-            if (!checkForWin() && roundCount != 8) {
-                Toast.makeText(this, "Player 1's Turn.", Toast.LENGTH_SHORT).show();
+            if (letter.equals("X") || letter.equals("O")) {
+                ((Button) v).setText(letter);
+                outputText.setText("");
+
+                if (!checkForWin() && roundCount != 8) {
+                    Toast.makeText(this, "Player 1's Turn.", Toast.LENGTH_SHORT).show();
+                }
+
+                if(checkForWin()) {
+                    if(!player1Turn) {
+                        player2Wins();
+                    }
+                }
+
+                player1Turn = true;
+            } else {
+                outputText.setText("Invalid input. Must enter a 'X' or an 'O'.");
+                player1Turn = false;
             }
         }
 
         roundCount++;
 
-        if(checkForWin()) {
-            if(player1Turn) {
-                player1Wins();
-            } else {
-                player2Wins();
-            }
-        } else if(roundCount == 9) {
+        if(roundCount == 9) {
             draw();
-        } else {
-            player1Turn = !player1Turn;
         }
 
     }

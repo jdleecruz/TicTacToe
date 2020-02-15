@@ -3,59 +3,84 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="16dp"
-            android:textAlignment="center">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:textAlignment="center">
 
-            <TextView
-                android:id="@+id/header_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/header_textview"
-                android:textColor="#000000"
-                android:textSize="36sp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/header_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/header_textview"
+            android:textColor="#000000"
+            android:textSize="36sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/numerical_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/header_textview"
-                android:layout_marginTop="20dp"
-                android:text="Numerical Rules:"
-                android:textColor="#000000"
-                android:textSize="24sp" />
+        <TextView
+            android:id="@+id/numerical_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header_textview"
+            android:layout_marginTop="10dp"
+            android:text="Numerical Rules:"
+            android:textColor="#000000"
+            android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/numerical_rules"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/numerical_header"
-                android:text="@string/numerical_rules"
-                android:textColor="#000000"
-                android:textSize="18sp" />
+        <TextView
+            android:id="@+id/numerical_rules"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/numerical_header"
+            android:text="@string/numerical_rules"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/wild_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/numerical_rules"
-                android:layout_marginTop="20dp"
-                android:text="Wild Rules:"
-                android:textColor="#000000"
-                android:textSize="24sp" />
+        <TextView
+            android:id="@+id/wild_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/numerical_rules"
+            android:layout_marginTop="16dp"
+            android:text="Wild Rules:"
+            android:textColor="#000000"
+            android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/wild_rules"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/wild_header"
-                android:text="@string/wild_rules"
-                android:textColor="#000000"
-                android:textSize="18sp" />
+        <TextView
+            android:id="@+id/wild_rules"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wild_header"
+            android:text="@string/wild_rules"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/notakto_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wild_rules"
+            android:layout_marginTop="16dp"
+            android:text="Notakto Rules:"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/notakto_rules"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/notakto_header"
+            android:layout_alignParentBottom="true"
+            android:text="@string/notakto_rules"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    </ScrollView>
 
 </LinearLayout>

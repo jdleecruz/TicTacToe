@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">TicTacToe</string>
+    <string name="header_textview"><u>How To Play</u></string>
+    <string name="numerical_rules">
+        <ul>
+            <li>Numbers 1 to 9 are used for this game.\n</li>
+            <li> Player 1 must only enter odd numbers.\n</li>
+            <li> Player 2 must only enter even numbers.\n</li>
+            <li> The player who puts down 15 points in a line, wins.</li>
+        </ul>
+    </string>
+    <string name="wild_rules">
+        <ul>
+            <li>Either player can place a X or an O on each move.\n</li>
+            <li> The first player to create a line of X or O, wins.</li>
+        </ul>
+    </string>
+    <string name="notakto_rules">
+        <ul>
+            <li>Player 1 begins, each player takes turns placing an X on the board.\n</li>
+            <li> When a player creates a three-in-a-row, that player loses.</li>
+        </ul>
+    </string>
 </resources>

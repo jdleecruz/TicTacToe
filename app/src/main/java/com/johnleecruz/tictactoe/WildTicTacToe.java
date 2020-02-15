@@ -189,6 +189,8 @@ public class WildTicTacToe extends Activity implements View.OnClickListener {
     private void resetGame() {
         player2Points = 0;
         player1Points = 0;
+        editText.setText("");
+        outputText.setText("");
         updatePointsText();
         resetBoard();
     }

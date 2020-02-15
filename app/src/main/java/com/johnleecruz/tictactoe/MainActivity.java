@@ -2,7 +2,6 @@ package com.johnleecruz.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +11,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button button_var1;
     private Button button_var2;
+    private Button button_var3;
     private Button button_rules;
 
     @Override
@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         button_var2 = findViewById(R.id.button_wild);
         button_var2.setOnClickListener(this);
+
+        button_var3 = findViewById(R.id.button_notakto);
+        button_var3.setOnClickListener(this);
 
         button_rules = findViewById(R.id.button_rules);
         button_rules.setOnClickListener(this);
@@ -40,6 +43,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if (v.getId() == R.id.button_wild) {
             Intent intent = new Intent(getApplicationContext(),
                     WildTicTacToe.class);
+            startActivity(intent);
+        }
+        else if (v.getId() == R.id.button_notakto) {
+            Intent intent = new Intent(getApplicationContext(),
+                    NotaktoTicTacToe.class);
             startActivity(intent);
         }
         else if (v.getId() == R.id.button_rules) {

@@ -141,28 +141,48 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
         for (int i = 0; i < 3; i++) {
             if(field[i][0] + field[i][1] + field[i][2]
                     == answer) {
-                winnerCheck = true;
+                if(field[i][0] == 0 || field[i][1] == 0 || field[i][2] == 0) {
+                    winnerCheck = false;
+                }
+                else {
+                    winnerCheck = true;
+                }
             }
         }
 
         for (int i = 0; i < 3; i++) {
             if((field[0][i]) + (field[1][i]) + (field[2][i])
                     == answer) {
-                winnerCheck = true;
+                if(field[0][i] == 0 || field[1][i] == 0 || field[2][i] == 0) {
+                    winnerCheck = false;
+                }
+                else {
+                    winnerCheck = true;
+                }
             }
         }
 
 
             if((field[0][0]) + (field[1][1]) + (field[2][2])
                     == answer) {
-                winnerCheck = true;
+                if(field[0][0] == 0 || field[1][1] == 0 || field[2][2] == 0) {
+                    winnerCheck = false;
+                }
+                else {
+                    winnerCheck = true;
+                }
             }
 
 
 
             if((field[0][2]) + (field[1][1]) + (field[2][0])
                     == answer) {
-                winnerCheck = true;
+                if(field[0][2] == 0 || field[1][1] == 0 || field[2][0] == 0) {
+                    winnerCheck = false;
+                }
+                else {
+                    winnerCheck = true;
+                }
             }
 
         return winnerCheck;

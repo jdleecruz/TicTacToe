@@ -83,6 +83,7 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
                 player1Turn = false;
 
                 if(checkForWin()) {
+                    player1Turn = true;
                     if(player1Turn) {
                         player1Wins();
                     }
@@ -163,8 +164,6 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
                     == answer) {
                 winnerCheck = true;
             }
-
-
 
         return winnerCheck;
     }

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,20 +21,14 @@ public class NotaktoTicTacToe extends Activity implements View.OnClickListener {
 
     private TextView textViewPlayer1;
     private TextView textViewPlayer2;
-    private TextView outputText;
-
-    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.numerical_tictactoe);
+        setContentView(R.layout.notakto);
 
         textViewPlayer1 = findViewById(R.id.text_view_p1);
         textViewPlayer2 = findViewById(R.id.text_view_p2);
-        outputText = findViewById(R.id.output_textview);
-
-        editText = findViewById(R.id.edit_text_players);
 
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 3; j++) {
@@ -61,61 +54,35 @@ public class NotaktoTicTacToe extends Activity implements View.OnClickListener {
             return;
         }
 
-        String letter = editText.getText().toString();
-
         if (player1Turn) {
-            if (letter.equals("X") || letter.equals("O")) {
-                ((Button) v).setText(letter);
-                outputText.setText("");
+            ((Button) v).setText("X");
 
-                if (!checkForWin() && roundCount != 8) {
-                    Toast.makeText(this, "Player 2's Turn.", Toast.LENGTH_SHORT).show();
-                }
-                player1Turn = false;
-
-                if(checkForWin()) {
-                    player1Turn = true;
-                    if(player1Turn) {
-                        player1Wins();
-                    }
-                }
-
-            } else {
-                outputText.setText("Invalid input. Must enter a 'X' or an 'O'.");
-                player1Turn = true;
+            if (!checkForLose() && roundCount != 8) {
+                Toast.makeText(this, "Player 2's Turn.", Toast.LENGTH_SHORT).show();
             }
         }
         else {
-            if (letter.equals("X") || letter.equals("O")) {
-                ((Button) v).setText(letter);
-                outputText.setText("");
+            ((Button) v).setText("X");
 
-                if (!checkForWin() && roundCount != 8) {
-                    Toast.makeText(this, "Player 1's Turn.", Toast.LENGTH_SHORT).show();
-                }
-
-                if(checkForWin()) {
-                    if(!player1Turn) {
-                        player2Wins();
-                    }
-                }
-
-                player1Turn = true;
-            } else {
-                outputText.setText("Invalid input. Must enter a 'X' or an 'O'.");
-                player1Turn = false;
+            if (!checkForLose() && roundCount != 8) {
+                Toast.makeText(this, "Player 1's Turn.", Toast.LENGTH_SHORT).show();
             }
         }
 
         roundCount++;
 
-        if(roundCount == 9) {
-            draw();
+        if(checkForLose()) {
+            if(player1Turn) {
+                player2Wins();
+            } else {
+                player1Wins();
+            }
+        } else {
+            player1Turn = !player1Turn;
         }
-
     }
 
-    private boolean checkForWin() {
+    private boolean checkForLose() {
         String[][] field = new String[3][3];
 
         for(int i = 0; i < 3; i++) {
@@ -165,11 +132,6 @@ public class NotaktoTicTacToe extends Activity implements View.OnClickListener {
         resetBoard();
     }
 
-    private void draw() {
-        Toast.makeText(this, "Draw!", Toast.LENGTH_SHORT).show();
-        resetBoard();
-    }
-
     private void updatePointsText() {
         textViewPlayer1.setText("Player 1: " + player1Points);
         textViewPlayer2.setText("Player 2: " + player2Points);
@@ -189,8 +151,6 @@ public class NotaktoTicTacToe extends Activity implements View.OnClickListener {
     private void resetGame() {
         player2Points = 0;
         player1Points = 0;
-        editText.setText("");
-        outputText.setText("");
         updatePointsText();
         resetBoard();
     }

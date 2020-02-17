@@ -1,11 +1,13 @@
 package com.johnleecruz.tictactoe;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,10 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
 
     private TextView textViewPlayer1;
     private TextView textViewPlayer2;
+
+    private TextView outputText;
+
+    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,76 +52,121 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
                 resetGame();
             }
         });
+
+        editText = findViewById(R.id.edit_text_players);
+        outputText = findViewById(R.id.output_textview);
     }
 
     @Override
     public void onClick(View v) {
-        if(!((Button) v).getText().toString().equals("")) {
+     /*   if(!((Button) v).getText().toString().equals("")) {
             return;
-        }
+        } */
 
-        if(player1Turn) {
-            ((Button) v).setText("X");
-            if (!checkForWin() && roundCount != 8) {
-                Toast.makeText(this, "Player 2's Turn.", Toast.LENGTH_SHORT).show();
+        String value= editText.getText().toString();
+        int finalValue=Integer.parseInt(value);
+      //  player1Turn = true;
+
+        if (player1Turn) {
+
+            if (value.equals("1") | value.equals("3") | value.equals("5") | value.equals("7") | value.equals("9")) {
+                ((Button) v).setText(editText.getText().toString());
+                outputText.setText(value);
+
+                if (!checkForWin() && roundCount != 8) {
+                    Toast.makeText(this, "Player 2's Turn.", Toast.LENGTH_SHORT).show();
+                }
+                player1Turn = false;
+
+                if(checkForWin()) {
+                  //  player1Turn = true;
+                    if(player1Turn) {
+                        player1Wins();
+                    }
+                }
+
+            } else {
+                outputText.setText("Player One can only enter 1, 3, 5, 7, 9");
+                player1Turn = true;
             }
-        } else {
-            ((Button) v).setText("O");
-            if (!checkForWin() && roundCount != 8) {
-                Toast.makeText(this, "Player 1's Turn.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            if (value.equals("2") || value.equals("4") || value.equals("6") || value.equals("8")) {
+                ((Button) v).setText(value);
+                outputText.setText(value);
+
+                if (!checkForWin() && roundCount != 8) {
+                    Toast.makeText(this, "Player 1's Turn.", Toast.LENGTH_SHORT).show();
+                }
+
+                if(checkForWin()) {
+                    if(!player1Turn) {
+                        player2Wins();
+                    }
+                }
+
+                player1Turn = true;
+            } else {
+                outputText.setText("Player two can only enter 2, 4, 6, 8");
+                player1Turn = false;
             }
         }
 
         roundCount++;
 
-        if(checkForWin()) {
-            if(player1Turn) {
-                player1Wins();
-            } else {
-                player2Wins();
-            }
-        } else if(roundCount == 9) {
+        if(roundCount == 9) {
             draw();
-        } else {
-            player1Turn = !player1Turn;
         }
+
 
     }
 
     private boolean checkForWin() {
-        String[][] field = new String[3][3];
+       int answer = 15;
+        int[][] field = new int[3][3];
 
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 3; j++) {
-                field[i][j] = buttons[i][j].getText().toString();
+                String v = buttons[i][j].getText().toString();
+                field[i][j] = 0;
+                if(v.length() > 0)
+                    field[i][j] = Integer.parseInt(v);
+
+            }
+        }
+
+  boolean winnerCheck = false;
+        
+        for (int i = 0; i < 3; i++) {
+            if(field[i][0] + field[i][1] + field[i][2]
+                    == answer) {
+                winnerCheck = true;
             }
         }
 
         for (int i = 0; i < 3; i++) {
-            if(field[i][0].equals(field[i][1]) && field[i][0].equals(field[i][2])
-                    && !field[i][0].equals("")) {
-                return true;
+            if((field[0][i]) + (field[1][i]) + (field[2][i])
+                    == answer) {
+                winnerCheck = true;
             }
         }
 
-        for (int i = 0; i < 3; i++) {
-            if(field[0][i].equals(field[1][i]) && field[0][i].equals(field[2][i])
-                    && !field[0][i].equals("")) {
-                return true;
+
+            if((field[0][0]) + (field[1][1]) + (field[2][2])
+                    == answer) {
+                winnerCheck = true;
             }
-        }
 
-        if(field[0][0].equals(field[1][1]) && field[0][0].equals(field[2][2])
-                && !field[0][0].equals("")) {
-            return true;
-        }
 
-        if(field[0][2].equals(field[1][1]) && field[0][2].equals(field[2][0])
-                && !field[0][2].equals("")) {
-            return true;
-        }
 
-        return false;
+            if((field[0][2]) + (field[1][1]) + (field[2][0])
+                    == answer) {
+                winnerCheck = true;
+            }
+
+
+
+        return winnerCheck;
     }
 
     private void player1Wins() {
@@ -138,8 +189,8 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
     }
 
     private void updatePointsText() {
-        textViewPlayer1.setText("Player 1: " + player1Points);
-        textViewPlayer2.setText("Player 2: " + player2Points);
+        textViewPlayer1.setText("Player1 points: " + Integer.toString(player1Points));
+        textViewPlayer2.setText("Player2 points: " + Integer.toString(player2Points));
     }
 
     private void resetBoard() {
@@ -181,4 +232,3 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
 
     }
 }
-

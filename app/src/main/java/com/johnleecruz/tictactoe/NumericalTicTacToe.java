@@ -1,7 +1,12 @@
+/*
+ * Team 3
+ * Tic-Tac-Toe App
+ * Rachella Hampton, John Lee-Cruz
+ */
+
 package com.johnleecruz.tictactoe;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -36,6 +41,9 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
         textViewPlayer1 = findViewById(R.id.text_view_p1);
         textViewPlayer2 = findViewById(R.id.text_view_p2);
 
+        outputText = findViewById(R.id.output_textview);
+        outputText.setText("Player 1 starts, enter your number then click above to end your turn.");
+
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 3; j++) {
                 String buttonID = "button_" + i + j;
@@ -59,19 +67,15 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-     /*   if(!((Button) v).getText().toString().equals("")) {
-            return;
-        } */
+
+        outputText.setText("");
 
         String value= editText.getText().toString();
-        int finalValue=Integer.parseInt(value);
-      //  player1Turn = true;
 
         if (player1Turn) {
 
             if (value.equals("1") | value.equals("3") | value.equals("5") | value.equals("7") | value.equals("9")) {
                 ((Button) v).setText(editText.getText().toString());
-                outputText.setText(value);
 
                 if (!checkForWin() && roundCount != 8) {
                     Toast.makeText(this, "Player 2's Turn.", Toast.LENGTH_SHORT).show();
@@ -79,7 +83,6 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
                 player1Turn = false;
 
                 if(checkForWin()) {
-                  //  player1Turn = true;
                     if(player1Turn) {
                         player1Wins();
                     }
@@ -93,7 +96,6 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
         else {
             if (value.equals("2") || value.equals("4") || value.equals("6") || value.equals("8")) {
                 ((Button) v).setText(value);
-                outputText.setText(value);
 
                 if (!checkForWin() && roundCount != 8) {
                     Toast.makeText(this, "Player 1's Turn.", Toast.LENGTH_SHORT).show();
@@ -117,8 +119,6 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
         if(roundCount == 9) {
             draw();
         }
-
-
     }
 
     private boolean checkForWin() {
@@ -189,8 +189,8 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
     }
 
     private void updatePointsText() {
-        textViewPlayer1.setText("Player1 points: " + Integer.toString(player1Points));
-        textViewPlayer2.setText("Player2 points: " + Integer.toString(player2Points));
+        textViewPlayer1.setText("Player 1: " + Integer.toString(player1Points));
+        textViewPlayer2.setText("Player 2: " + Integer.toString(player2Points));
     }
 
     private void resetBoard() {
@@ -207,6 +207,8 @@ public class NumericalTicTacToe extends Activity implements View.OnClickListener
     private void resetGame() {
         player2Points = 0;
         player1Points = 0;
+        editText.setText("");
+        outputText.setText("Player 1 starts, enter your number then click above to end your turn.");
         updatePointsText();
         resetBoard();
     }

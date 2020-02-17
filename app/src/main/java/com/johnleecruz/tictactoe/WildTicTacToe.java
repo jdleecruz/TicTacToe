@@ -1,3 +1,9 @@
+/*
+ * Team 3
+ * Tic-Tac-Toe App
+ * Rachella Hampton, John Lee-Cruz
+ */
+
 package com.johnleecruz.tictactoe;
 
 import android.app.Activity;

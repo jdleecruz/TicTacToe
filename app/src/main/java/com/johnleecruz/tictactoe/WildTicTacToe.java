@@ -34,6 +34,7 @@ public class WildTicTacToe extends Activity implements View.OnClickListener {
         textViewPlayer1 = findViewById(R.id.text_view_p1);
         textViewPlayer2 = findViewById(R.id.text_view_p2);
         outputText = findViewById(R.id.output_textview);
+        outputText.setText("Player 1 starts, enter a X or O then push a square to complete your turn.");
 
         editText = findViewById(R.id.edit_text_players);
 
@@ -190,7 +191,7 @@ public class WildTicTacToe extends Activity implements View.OnClickListener {
         player2Points = 0;
         player1Points = 0;
         editText.setText("");
-        outputText.setText("");
+        outputText.setText("Player 1 starts, enter a X or O then push a square to complete your turn.");
         updatePointsText();
         resetBoard();
     }

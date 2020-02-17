@@ -21,6 +21,7 @@ public class NotaktoTicTacToe extends Activity implements View.OnClickListener {
 
     private TextView textViewPlayer1;
     private TextView textViewPlayer2;
+    private TextView output_textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,9 @@ public class NotaktoTicTacToe extends Activity implements View.OnClickListener {
 
         textViewPlayer1 = findViewById(R.id.text_view_p1);
         textViewPlayer2 = findViewById(R.id.text_view_p2);
+
+        output_textView = findViewById(R.id.output_textview);
+        output_textView.setText("Player 1 starts, click on a square above to end your turn.");
 
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 3; j++) {
@@ -50,6 +54,8 @@ public class NotaktoTicTacToe extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        output_textView.setText("");
+
         if(!((Button) v).getText().toString().equals("")) {
             return;
         }
@@ -151,6 +157,7 @@ public class NotaktoTicTacToe extends Activity implements View.OnClickListener {
     private void resetGame() {
         player2Points = 0;
         player1Points = 0;
+        output_textView.setText("Player 1 starts, click on a square above to end your turn.");
         updatePointsText();
         resetBoard();
     }
